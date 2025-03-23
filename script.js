@@ -1,79 +1,53 @@
-const canvas = document.getElementById("gameCanvas");
+const canvas = document.getElementById("bikeCanvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 800;
-canvas.height = 400;
+// Draw the bike frame
+ctx.beginPath();
+ctx.moveTo(100, 200); // Start point
+ctx.lineTo(150, 150); // Diagonal to handle
+ctx.lineTo(200, 150); // Handlebar
+ctx.lineTo(250, 200); // Diagonal to seat
+ctx.lineTo(300, 200); // Seat
+ctx.strokeStyle = "black";
+ctx.lineWidth = 5;
+ctx.stroke();
 
-let bikeY = canvas.height / 2;
-let bikeHeight = 30;
-let bikeWidth = 50;
-let speed = 3;
-let obstacles = [];
-let score = 0;
+// Draw the handle (black)
+ctx.beginPath();
+ctx.moveTo(150, 150);
+ctx.lineTo(150, 100);
+ctx.strokeStyle = "black";
+ctx.lineWidth = 5;
+ctx.stroke();
 
-document.addEventListener("keydown", moveBike);
+// Draw the seat (black)
+ctx.beginPath();
+ctx.arc(300, 200, 10, 0, Math.PI * 2);
+ctx.fillStyle = "black";
+ctx.fill();
 
-function moveBike(e) {
-    if (e.key === "ArrowUp" && bikeY > 0) bikeY -= 20;
-    if (e.key === "ArrowDown" && bikeY < canvas.height - bikeHeight) bikeY += 20;
-}
+// Draw the engine (white)
+ctx.beginPath();
+ctx.arc(200, 200, 30, 0, Math.PI * 2);
+ctx.fillStyle = "white";
+ctx.fill();
+ctx.strokeStyle = "black";
+ctx.lineWidth = 2;
+ctx.stroke();
 
-function createObstacle() {
-    let height = Math.random() * 100 + 20;
-    obstacles.push({ x: canvas.width, y: Math.random() * (canvas.height - height), width: 20, height });
-}
+// Draw the stand (grey)
+ctx.beginPath();
+ctx.moveTo(220, 230);
+ctx.lineTo(220, 270);
+ctx.lineTo(240, 270);
+ctx.strokeStyle = "grey";
+ctx.lineWidth = 5;
+ctx.stroke();
 
-function updateObstacles() {
-    obstacles.forEach((obs, index) => {
-        obs.x -= speed;
-        if (obs.x + obs.width < 0) {
-            obstacles.splice(index, 1);
-            score++;
-        }
-
-        // Collision Detection
-        if (
-            obs.x < bikeWidth &&
-            obs.x + obs.width > 0 &&
-            bikeY < obs.y + obs.height &&
-            bikeY + bikeHeight > obs.y
-        ) {
-            alert(`Game Over! Your score: ${score}`);
-            document.location.reload();
-        }
-    });
-}
-
-function drawBike() {
-    ctx.fillStyle = "#0f0";
-    ctx.fillRect(10, bikeY, bikeWidth, bikeHeight);
-}
-
-function drawObstacles() {
-    ctx.fillStyle = "#f00";
-    obstacles.forEach((obs) => {
-        ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
-    });
-}
-
-function drawScore() {
-    ctx.fillStyle = "#fff";
-    ctx.font = "20px Arial";
-    ctx.fillText("Score: " + score, 10, 30);
-}
-
-function gameLoop() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBike();
-    drawObstacles();
-    drawScore();
-    updateObstacles();
-
-    if (Math.random() < 0.02) {
-        createObstacle();
-    }
-
-    requestAnimationFrame(gameLoop);
-}
-
-gameLoop();
+// Draw the wheels
+ctx.beginPath();
+ctx.arc(150, 250, 30, 0, Math.PI * 2); // Front wheel
+ctx.arc(300, 250, 30, 0, Math.PI * 2); // Rear wheel
+ctx.strokeStyle = "black";
+ctx.lineWidth = 5;
+ctx.stroke();
