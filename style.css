@@ -1,20 +1,18 @@
-
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+body, html {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #222;
 }
 
-h1 {
-    margin-bottom: 20px;
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-#game-board {
-    border: 2px solid #333;
-    background-color: #000;
+canvas {
+    background-color: #333;
+    border: 2px solid #fff;
 }
