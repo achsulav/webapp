@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bike Illustration</title>
-    <style>
-        canvas {
-            border: 1px solid #000;
-            display: block;
-            margin: 20px auto;
-        }
-    </style>
+    <title>Bike Racing Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 style="text-align: center;">Bike Illustration</h1>
-    <canvas id="bikeCanvas" width="400" height="300"></canvas>
+    <h1>Pranav Bike Racing Game</h1>
+    <div id="game-container">
+        <div id="bike"></div>
+        <div id="obstacle"></div>
+    </div>
+    <p>Score: <span id="score">0</span></p>
     <script src="script.js"></script>
 </body>
 </html>
