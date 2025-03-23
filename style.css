@@ -1,18 +1,44 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #222;
-}
-
-.game-container {
+body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #87CEEB;
 }
 
-canvas {
-    background-color: #333;
-    border: 2px solid #fff;
+#game-container {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background-color: #87CEEB;
+    border: 2px solid #333;
+    overflow: hidden;
+}
+
+#bike {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    bottom: 0;
+    left: 180px;
+    border-radius: 10px;
+}
+
+#obstacle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    top: 0;
+    left: Math.floor(Math.random() * 340) + "px";
+    border-radius: 10px;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-top: 20px;
 }
